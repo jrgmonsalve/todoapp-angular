@@ -1,27 +1,68 @@
-# Todoapp
+# Angular: Weather Component
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+## Environment 
 
-## Development server
+- Angular CLI Version: 10.0.4
+- Angular Core Version: 10.0.4
+- Node Version: 12.18.3
+- Default Port: 8000
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Application Demo:
 
-## Code scaffolding
+![](https://hrcdn.net/s3_pub/istreet-assets/aiYyB8bIMufQ00lpPduPbQ/weather-component.gif)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Functionality Requirements
 
-## Build
+- An array of objects is passed as a prop to the component, where each object is a weather record for a single city. The object has 4 properties:
+    1. name: The name of the city. [STRING]
+    2. temperature: The temperature in the city. [STRING]
+    3. wind: The wind in the city. [STRING]
+    4. humidity: The humidity in the cit.y [STRING]
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- There is an input field for the city name where the user can type the name of a city to search the weather data for. (The city name is case-insensitive.)
 
-## Running unit tests
+- If data exists for the typed input, render the weather details `<div>` as below, inside `<div data-test-id="weather-details">`.
+    1. `<span data-test-id="output-temperature">{temperature}</span>`, where {temperature} is the value from the weather record.
+    2. `<div data-test-id="output-wind">Wind: {wind}</div>`, where {wind} is the value from the weather record.
+    3. `<div data-test-id="output-humidity">Humidity: {humidity}</div>`, where {humidity} is the value from the weather record.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- If no data exists for the typed input, do not render the weather details `<div>`, but instead render `<div data-test-id="no-results">No Results Found</div>`.
 
-## Running end-to-end tests
+- At component render, since nothing is typed, do not render above 2 divs.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Testing Requirements
 
-## Further help
+- The city name input should have the data-test-id attribute 'app-input'.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- The `<div>` containing weather details should have the data-test-id attribute 'weather-details'.
+
+- The `<span>` containing the temperature should have the data-test-id attribute 'output-temperature'.
+
+- The `<div>` containing the wind information should have the data-test-id attribute 'output-wind'.
+
+- The `<div>` containing the humidity information should have the data-test-id attribute 'output-humidity'.
+
+- The 'No Results Found' `<div>` should have the data-test-id attribute 'no-results'.
+
+
+## Project Specifications
+
+**Read-only Files**
+- src/app/weatherDetails/weatherDetails.component.spec.ts
+- src/app/app.component.spec.ts
+- src/app/app.component.ts
+- src/app/app.module.ts
+
+**Commands**
+- run: 
+```bash
+bash bin/env_setup && . $HOME/.nvm/nvm.sh && npm start
+```
+- install: 
+```bash
+bash bin/env_setup && . $HOME/.nvm/nvm.sh && npm install
+```
+- test: 
+```bash
+bash bin/env_setup && . $HOME/.nvm/nvm.sh && npm test
+```
